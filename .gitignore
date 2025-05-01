@@ -1,0 +1,96 @@
+# =====================================
+# OS-specific files
+# =====================================
+.DS_Store
+Thumbs.db
+
+# =====================================
+# Java build outputs
+# =====================================
+*.class
+*.jar
+*.war
+*.ear
+build/
+out/
+bin/
+
+# =====================================
+# Gradle
+# =====================================
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+gradle-app.setting
+
+# =====================================
+# IntelliJ IDEA
+# =====================================
+.idea/
+*.iml
+*.ipr
+.idea_modules/
+*.iws
+
+# IntelliJ output folders
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+# =====================================
+# STS (Spring Tool Suite)
+# =====================================
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# =====================================
+# NetBeans
+# =====================================
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# =====================================
+# VS Code
+# =====================================
+.vscode/
+
+# =====================================
+# Logs
+# =====================================
+*.log
+logs/
+**/logs/
+
+# =====================================
+# Environment & secret files
+# =====================================
+.env
+.env.*
+*.local
+application.properties
+application-*.yml
+application-*.yaml
+
+# =====================================
+# Reports & test results
+# =====================================
+test-output/
+**/test-results/
+**/test-output/
+.sonar/
+jacoco.exec
+coverage-report/
+
+# =====================================
+# Backup & temporary files
+# =====================================
+*.tmp
+*.bak
+*.swp
+*~

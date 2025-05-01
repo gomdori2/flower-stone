@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>asdfasfasdf</div>
+    <input type="text" id="userName"/>
+    <div id="alertText">유저이름을 입력해주세요.</div>
+    <button onclick="as()">ss</button>
+</body>
+<script>
+    function as(){
+        let username = document.getElementById("userName").value;
+        a(username);
+    }
+    function a(username){
+    let alertText = document.getElementById("alertText");
+
+    fetch(`http://localhost:8080/users/${username}`, {
+    method: 'GET', // GET 요청
+    headers: {
+        'Content-Type': 'application/json'
+    }
+})
+.then(response => {
+    if (!response.ok) {
+        alertText.innerText = "해당 유저는 없습니다."
+        throw new Error('해당 유저는 없습니다.');
+    }
+    return response.json(); // 응답을 JSON 형식으로 변환
+})
+.then(data => {
+    console.log('User data:', data); // 데이터 처리
+    alertText.innerText = `아이디 : ${data.id} 이메일 : ${data.email} 이름 :${data.username} `;
+})
+.catch(error => {
+    console.error('Error:', error);
+});
+    }
+</script>
+</html>
