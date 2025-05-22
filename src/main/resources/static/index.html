@@ -6,12 +6,47 @@
     <title>Document</title>
 </head>
 <body>
-    <div>asdfasfasdf</div>
-    <input type="text" id="userName"/>
-    <div id="alertText">유저이름을 입력해주세요.</div>
-    <button onclick="as()">ss</button>
+    <div>
+        <div>asdfasfasdf</div>
+        <input type="text" id="userName"/>
+        <div id="alertText">유저이름을 입력해주세요.</div>
+        <button onclick="as()">ss</button>
+    </div>
+    <div>
+        <h1>파일 업로드 테스트</h1>
+        <input type="file" id="fileInput" />
+        <button id="uploadBtn">업로드</button>
+
+        <p id="result"></p>
+    </div>
 </body>
 <script>
+    const uploadBtn = document.getElementById('uploadBtn');
+    const fileInput = document.getElementById('fileInput');
+    const result = document.getElementById('result');
+
+    uploadBtn.addEventListener('click', () => {
+      const file = fileInput.files[0];
+      if (!file) {
+        alert('파일을 선택해주세요!');
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      fetch('http://localhost:8080/api/files/upload', {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.text())
+      .then(data => {
+        result.textContent = '업로드 결과: ' + data;
+      })
+      .catch(err => {
+        result.textContent = '업로드 실패: ' + err.message;
+      });
+    });
     function as(){
         let username = document.getElementById("userName").value;
         a(username);
